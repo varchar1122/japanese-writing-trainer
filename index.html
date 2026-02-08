@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Тренажер японской письменности</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body>
+    <div class="app-container">
+      <header class="app-header">
+        <div class="container">
+          <h1 class="logo">
+            <i class="fas fa-language"></i>
+            Тренажер японской письменности
+          </h1>
+          <nav class="main-nav">
+            <button class="nav-btn" onclick="app.showMainMenu()">
+              <i class="fas fa-home"></i> Главная
+            </button>
+            <button class="nav-btn" onclick="app.showStatsScreen()">
+              <i class="fas fa-chart-line"></i> Статистика
+            </button>
+          </nav>
+        </div>
+      </header>
+
+      <main class="app-main" id="app-main">
+        <!-- Контент будет подставляться здесь -->
+      </main>
+
+      <footer class="app-footer">
+        <div class="container">
+          <p>
+            © 2026 Тренажер японской письменности. Для изучающих японский язык.
+          </p>
+          <p class="version">Версия 1.0</p>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Модальные окна -->
+    <div id="modal-overlay" class="modal-overlay"></div>
+    <div id="modal-container" class="modal-container"></div>
+
+    <!-- Подключение скриптов -->
+    <script src="data.js"></script>
+    <script src="storage.js"></script>
+    <script src="components/selection.js"></script>
+    <script src="components/training.js"></script>
+    <script src="components/writing.js"></script>
+    <script src="components/kanji.js"></script>
+    <script src="components/stats.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
