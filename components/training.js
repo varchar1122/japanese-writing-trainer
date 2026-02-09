@@ -29,18 +29,11 @@ class TrainingScreen {
                 </div>
                 
                 <div class="question-display" id="question-symbol"></div>
-
-                <div class="symbol-info" style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-                    <button class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem; background: #f8f9fa; border: 1px solid var(--light-border);" 
-                            onclick="app.training.showWritingReference()">
-                        <i class="fas fa-pen-alt"></i> Посмотреть порядок начертания
-                    </button>
-                </div>
                 
                 <div class="symbol-info" id="symbol-info"></div>
                 
                 <input type="text" class="answer-input" id="answer-input" 
-                       placeholder="Введите ромадзи (например: ka, shi, tsu)" 
+                       placeholder="Введите ромадзи (например ka)" 
                        autocomplete="off" autofocus>
                 
                 <div class="result-message" id="result-message"></div>
