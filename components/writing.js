@@ -226,7 +226,7 @@ class WritingTrainingScreen {
             <h2 class="modal-title">${title}</h2>
             <div class="modal-content">${content}</div>
             <div class="modal-actions">
-                <button class="btn btn-primary" onclick="app.showSelectionScreen(); Utils.hideModal();">
+                <button class="btn btn-primary" onclick="Utils.hideModal(); app.showSelectionScreen('writing');">
                     <i class="fas fa-redo"></i> Новая тренировка
                 </button>
                 <button class="btn btn-danger" onclick="Utils.hideModal(); app.showMainMenu();">
@@ -237,58 +237,5 @@ class WritingTrainingScreen {
 
     modalContainer.style.display = "block";
     modalOverlay.style.display = "block";
-  }
-
-  showReference(alphabet) {
-    const title =
-      alphabet === "hiragana"
-        ? "Таблица хираганы с порядком начертания"
-        : "Таблица катаканы с порядком начертания";
-    const imageUrl =
-      alphabet === "hiragana"
-        ? "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Table_hiragana-ru.svg/1200px-Table_hiragana-ru.svg.png"
-        : "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Table_katakana.svg/1280px-Table_katakana.svg.png";
-
-    const content = `
-        <h3 style="color: var(--secondary-color); margin-bottom: 1rem;">
-            <i class="fas fa-hand-point-up"></i> ${title}
-        </h3>
-        <p style="margin-bottom: 1.5rem; color: var(--dark-text);">
-            Красными цифрами показан порядок начертания черт. Начинайте с цифры 1 и следуйте по порядку.
-            Стрелки показывают направление движения ручки.
-        </p>
-        <div style="overflow-x: auto; max-height: 500px; border-radius: var(--border-radius); background: #f8f9fa; padding: 1rem;">
-            <img src="${imageUrl}" 
-                 alt="${title}" 
-                 style="max-width: 100%; height: auto; border-radius: var(--border-radius); box-shadow: var(--shadow);"
-                 onerror="this.onerror=null; this.src='https://via.placeholder.com/800x600/cccccc/666666?text=Таблица+загружается...';">
-        </div>
-        <div style="margin-top: 1.5rem; padding: 1rem; background: linear-gradient(135deg, #fff9e6, #fff3cd); border-radius: var(--border-radius); border-left: 4px solid var(--warning-color);">
-            <h4 style="color: #856404; margin-bottom: 0.5rem;">
-                <i class="fas fa-lightbulb"></i> Как читать таблицу:
-            </h4>
-            <ul style="color: #856404; padding-left: 1.5rem;">
-                <li><strong>Красные цифры</strong> - порядок черт</li>
-                <li><strong>Стрелки</strong> - направление движения</li>
-                <li><strong>Точки</strong> - начало черты</li>
-                <li>Практикуйтесь, повторяя символ несколько раз</li>
-            </ul>
-        </div>
-    `;
-
-    const buttons = [
-      {
-        text: '<i class="fas fa-times"></i> Закрыть',
-        class: "btn-danger",
-        onclick: "Utils.hideModal()",
-      },
-      {
-        text: `<i class="fas fa-pen"></i> Продолжить письмо`,
-        class: "btn-primary",
-        onclick: "Utils.hideModal()",
-      },
-    ];
-
-    Utils.showModal(title, content, buttons);
   }
 }
