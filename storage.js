@@ -86,20 +86,25 @@ class StorageManager {
 
   loadKanjiList() {
     try {
-      const defaultKanjiSet = new Set(DEFAULT_KANJI.map((k) => k.kanji));
-      let stored = [];
       const data = localStorage.getItem("japanese_kanji");
+
       if (data) {
-        stored = JSON.parse(data);
+        const stored = JSON.parse(data);
+        // Если в хранилище уже есть список (в том числе с изменёнными/удалёнными
+        // дефолтными кандзи) — полностью доверяем ему.
+        if (Array.isArray(stored) && stored.length > 0) {
+          return stored;
+        }
       }
-      // Всегда: сначала кандзи по умолчанию, затем из localStorage (без дубликатов по kanji)
-      const merged = [
-        ...DEFAULT_KANJI,
-        ...stored.filter((k) => !defaultKanjiSet.has(k.kanji)),
-      ];
-      return merged;
+
+      // Если сохранённого списка нет или он пустой — один раз инициализируем
+      // кандзи по умолчанию и сохраняем их как обычный пользовательский список.
+      const initial = [...DEFAULT_KANJI];
+      localStorage.setItem("japanese_kanji", JSON.stringify(initial));
+      return initial;
     } catch (e) {
       console.error("Ошибка загрузки кандзи:", e);
+      // В случае ошибки даём хотя бы дефолтный список (без сохранения)
       return [...DEFAULT_KANJI];
     }
   }
@@ -427,3 +432,4 @@ const ProgressUtils = {
     return newArray;
   },
 };
+
